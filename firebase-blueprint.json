@@ -1,0 +1,311 @@
+{
+  "entities": {
+    "plan": {
+      "title": "Plan",
+      "description": "Pelan Operasi SK Rompin berteraskan Rancangan Pendidikan Malaysia 2026-2035",
+      "type": "object",
+      "properties": {
+        "planId": {
+          "type": "string",
+          "description": "ID unik bagi pelan",
+          "maxLength": 128
+        },
+        "tahun": {
+          "type": "string",
+          "description": "Tahun pelaksanaan pelan",
+          "maxLength": 10
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit organisasi (Kurikulum, Hal Ehwal Murid, Kokurikulum)",
+          "maxLength": 100
+        },
+        "panitia": {
+          "type": "string",
+          "description": "Nama panitia atau bahagian",
+          "maxLength": 100
+        },
+        "isu": {
+          "type": "string",
+          "description": "Isu strategik yang dikenal pasti",
+          "maxLength": 2000
+        },
+        "teras": {
+          "type": "string",
+          "description": "Teras strategik RPM",
+          "maxLength": 200
+        },
+        "strategi": {
+          "type": "string",
+          "description": "Strategi pelaksanaan RPM",
+          "maxLength": 200
+        },
+        "prakarsa": {
+          "type": "string",
+          "description": "Prakarsa utama RPM",
+          "maxLength": 300
+        },
+        "program": {
+          "type": "string",
+          "description": "Nama program atau intervensi",
+          "maxLength": 200
+        },
+        "matlamat": {
+          "type": "string",
+          "description": "Matlamat utama program",
+          "maxLength": 2000
+        },
+        "objektif": {
+          "type": "string",
+          "description": "Objektif khusus program",
+          "maxLength": 3000
+        },
+        "kpi": {
+          "type": "string",
+          "description": "Petunjuk prestasi utama (KPI)",
+          "maxLength": 1000
+        },
+        "sasaranKpi": {
+          "type": "string",
+          "description": "Sasaran kuantitatif KPI",
+          "maxLength": 500
+        },
+        "tempoh": {
+          "type": "string",
+          "description": "Tempoh pelaksanaan program",
+          "maxLength": 200
+        },
+        "sasaran": {
+          "type": "string",
+          "description": "Kumpulan sasaran murid atau guru",
+          "maxLength": 300
+        },
+        "tanggungjawab": {
+          "type": "string",
+          "description": "Pegawai atau jawatankuasa bertanggungjawab",
+          "maxLength": 500
+        },
+        "proses": {
+          "type": "string",
+          "description": "Proses kerja mengikut kitaran PDCA",
+          "maxLength": 5000
+        },
+        "kewangan": {
+          "type": "string",
+          "description": "Perincian kos dan sumber kewangan PCG",
+          "maxLength": 1000
+        },
+        "kekangan": {
+          "type": "string",
+          "description": "Kekangan atau cabaran pelaksanaan",
+          "maxLength": 2000
+        },
+        "pemantauan": {
+          "type": "string",
+          "description": "Kaedah dan instrumen pemantauan",
+          "maxLength": 2000
+        },
+        "penilaian": {
+          "type": "string",
+          "description": "Kaedah penilaian pencapaian",
+          "maxLength": 2000
+        },
+        "penambahbaikan": {
+          "type": "string",
+          "description": "Cadangan tindakan susulan dan penambahbaikan",
+          "maxLength": 2000
+        },
+        "evidens": {
+          "type": "string",
+          "description": "Evidens dan dokumentasi sokongan",
+          "maxLength": 2000
+        },
+        "gambarUrl": {
+          "type": "string",
+          "description": "URL gambar atau data base64 evidens",
+          "maxLength": 5000000
+        },
+        "pdcaStage": {
+          "type": "string",
+          "description": "Tahap PDCA semasa (PLAN, DO, CHECK, ACT)",
+          "maxLength": 20
+        },
+        "pdcaProgress": {
+          "type": "number",
+          "description": "Peratus kemajuan kitaran PDCA (0-100)"
+        },
+        "pdcaData": {
+          "type": "string",
+          "description": "Data JSON terperinci bagi fasa PDCA",
+          "maxLength": 50000
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "Pengguna yang mencipta rekod pelan",
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Tarikh dicipta"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Tarikh dikemas kini"
+        }
+      },
+      "required": ["planId", "tahun", "unit", "panitia", "program"]
+    },
+    "schoolSetting": {
+      "title": "SchoolSetting",
+      "description": "Konfigurasi dan tetapan rasmi sekolah",
+      "type": "object",
+      "properties": {
+        "schoolName": {
+          "type": "string",
+          "description": "Nama sekolah",
+          "maxLength": 200
+        },
+        "place": {
+          "type": "string",
+          "description": "Lokasi dan negeri sekolah",
+          "maxLength": 200
+        },
+        "gb": {
+          "type": "string",
+          "description": "Nama Guru Besar",
+          "maxLength": 200
+        },
+        "pk": {
+          "type": "string",
+          "description": "Nama Penolong Kanan Pentadbiran",
+          "maxLength": 200
+        },
+        "kp": {
+          "type": "string",
+          "description": "Nama Ketua Panitia",
+          "maxLength": 200
+        },
+        "motto": {
+          "type": "string",
+          "description": "Moto sekolah",
+          "maxLength": 200
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL logo rasmi sekolah",
+          "maxLength": 10000
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Tarikh dikemas kini"
+        }
+      },
+      "required": ["schoolName", "place"]
+    },
+    "uploadedFile": {
+      "title": "UploadedFile",
+      "description": "Fail dan gambar lampiran evidens pelaksanaan",
+      "type": "object",
+      "properties": {
+        "fileId": {
+          "type": "string",
+          "description": "ID unik fail",
+          "maxLength": 128
+        },
+        "planId": {
+          "type": "string",
+          "description": "ID pelan yang dipautkan (jika ada)",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Nama asal fail",
+          "maxLength": 255
+        },
+        "size": {
+          "type": "number",
+          "description": "Saiz fail dalam bait"
+        },
+        "type": {
+          "type": "string",
+          "description": "MIME type fail",
+          "maxLength": 100
+        },
+        "data": {
+          "type": "string",
+          "description": "Kandungan data fail base64",
+          "maxLength": 15000000
+        },
+        "category": {
+          "type": "string",
+          "description": "Kategori fail (dashboard, evidens, lampiran)",
+          "maxLength": 50
+        },
+        "uploadedBy": {
+          "type": "string",
+          "description": "Nama atau e-mel pemuat naik",
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Tarikh muat naik fail"
+        }
+      },
+      "required": ["fileId", "name", "size", "type", "data"]
+    },
+    "userProfile": {
+      "title": "UserProfile",
+      "description": "Profil akaun pengguna berdaftar SK Rompin",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID",
+          "maxLength": 128
+        },
+        "email": {
+          "type": "string",
+          "description": "Alamat e-mel pengguna",
+          "maxLength": 255
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Nama paparan pengguna",
+          "maxLength": 255
+        },
+        "role": {
+          "type": "string",
+          "description": "Peranan pengguna (guru, ketua_panitia, pentadbir)",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Tarikh pendaftaran"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Tarikh kemas kini"
+        }
+      },
+      "required": ["uid", "email"]
+    }
+  },
+  "firestore": {
+    "/plans/{planId}": {
+      "schema": "plan",
+      "description": "Koleksi rekod pelan operasi sekolah"
+    },
+    "/settings/{settingId}": {
+      "schema": "schoolSetting",
+      "description": "Koleksi konfigurasi dan tetapan sekolah"
+    },
+    "/files/{fileId}": {
+      "schema": "uploadedFile",
+      "description": "Koleksi fail dan gambar evidens berpusat"
+    },
+    "/users/{userId}": {
+      "schema": "userProfile",
+      "description": "Koleksi profil pengguna berdaftar"
+    }
+  }
+}

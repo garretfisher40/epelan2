@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email'])
+        && data.uid is string && data.uid.size() > 0 && data.uid.size() <= 128
+        && data.email is string && data.email.size() > 0 && data.email.size() <= 255;
+    }
+
+    function isValidPlan(data) {
+      return data.keys().hasAll(['planId', 'tahun', 'unit', 'panitia', 'program'])
+        && data.planId is string && data.planId.size() > 0 && data.planId.size() <= 128
+        && data.tahun is string && data.tahun.size() > 0 && data.tahun.size() <= 20
+        && data.unit is string && data.unit.size() > 0 && data.unit.size() <= 150
+        && data.panitia is string && data.panitia.size() > 0 && data.panitia.size() <= 150
+        && data.program is string && data.program.size() > 0 && data.program.size() <= 300;
+    }
+
+    function isValidSetting(data) {
+      return data.keys().hasAll(['schoolName', 'place'])
+        && data.schoolName is string && data.schoolName.size() > 0 && data.schoolName.size() <= 200
+        && data.place is string && data.place.size() > 0 && data.place.size() <= 200;
+    }
+
+    function isValidFile(data) {
+      return data.keys().hasAll(['fileId', 'name', 'size', 'type', 'data'])
+        && data.fileId is string && data.fileId.size() > 0 && data.fileId.size() <= 128
+        && data.name is string && data.name.size() > 0 && data.name.size() <= 255
+        && data.size is number
+        && data.type is string && data.type.size() <= 100
+        && data.data is string;
+    }
+
+    // Default deny for unspecified paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Connection test document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Plans Collection
+    match /plans/{planId} {
+      allow read: if true;
+      allow create, update: if isValidId(planId) && isValidPlan(incoming());
+      allow delete: if isValidId(planId);
+    }
+
+    // School Settings Collection
+    match /settings/{settingId} {
+      allow read: if true;
+      allow create, update: if isValidId(settingId) && isValidSetting(incoming());
+      allow delete: if false;
+    }
+
+    // Evidens and Uploaded Files Collection
+    match /files/{fileId} {
+      allow read: if true;
+      allow create, update: if isValidId(fileId) && isValidFile(incoming());
+      allow delete: if isValidId(fileId);
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow read: if true;
+      allow create, update: if isValidId(userId) && isValidUser(incoming());
+      allow delete: if false;
+    }
+  }
+}
